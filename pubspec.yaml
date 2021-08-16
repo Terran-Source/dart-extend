@@ -1,6 +1,6 @@
 name: extend
 description: A Dart port of classic `extend()` method from jQuery. Empower `Map` to be `extend()`-ed
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/Terran-Source/dart-extend
 repository: https://github.com/Terran-Source/dart-extend
 issue_tracker: https://github.com/Terran-Source/dart-extend/issues
@@ -9,6 +9,6 @@ environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dev_dependencies:
-  interpolation: ^2.1.0
+  interpolation: ^2.1.1
   lint: ^1.5.3
-  test: ^1.17.10
+  test: ^1.17.11

@@ -1,6 +1,4 @@
-# extend
-
-A Dart port of classic `extend()` method from jQuery. Empower `Map` to be `extend()`-ed
+# extend [![Pub version](https://img.shields.io/pub/v/extend.svg?style=plastic)](https://pub.dev/packages/extend) [![GitHub](https://img.shields.io/github/license/Terran-Source/dart-extend?logo=github&style=plastic)](LICENSE)
 
 A Dart port of classic `extend()` method from jQuery. It `extend` an existing Mutable Map with another `source`. It can be extended by multiple additional `sources` in a sequence.
 
