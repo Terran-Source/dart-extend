@@ -87,7 +87,12 @@ workflows:
           # echo "Flutter bin directory contents"
           # ls -al $FLUTTER_ROOT/bin
           # echo "----"
+          export PATH=$FLUTTER_ROOT/bin:$PATH
+          echo "----"
           flutter --version
+          echo "----"
+          $FLUTTER_ROOT/bin/dart
+          echo "----"
       - name: Goto Project Directory
         script: cd $PROJECT_PATH
       - name: Get Dart packages
@@ -103,11 +108,11 @@ workflows:
           export PATH=$FLUTTER_ROOT/bin:$PATH
           dart --version
       - name: Test Project
-        script: dart test
+        script: $FLUTTER_ROOT/bin/dart test .
       - name: Run Example
         script: |
           mkdir -p example-results
-          dart run ./example/extend_example.dart > example-results/example-results.txt
+          $FLUTTER_ROOT/bin/dart run ./example/extend_example.dart > example-results/example-results.txt
         test_report: example-results/example-results.txt
     artifacts:
       - flutter_drive.log
