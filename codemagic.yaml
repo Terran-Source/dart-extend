@@ -83,7 +83,6 @@ workflows:
           echo "----"
           flutter --version
           echo "----"
-          # dart --version
           $FLUTTER_ROOT/bin/dart --version
           echo "----"
       - name: Goto Project Directory
@@ -91,24 +90,24 @@ workflows:
           echo "Project path: $FCI_BUILD_DIR"
           cd $FCI_BUILD_DIR
       - name: Get Dart packages
-        script: flutter pub get
-      - name: Dart Code Metrics
-        script: |
-          flutter pub global activate dart_code_metrics 4.2.1
-          mkdir -p metrics-results
-          flutter pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
-        test_report: metrics-results/dart_code_metrics.json
+        script: flutter packages pub get
       - name: Test Project
         script: |
           pwd
           # cd $FCI_BUILD_DIR
-          $FLUTTER_ROOT/bin/dart pub get
+          # $FLUTTER_ROOT/bin/dart pub get
           $FLUTTER_ROOT/bin/dart test
       - name: Run Example
         script: |
           mkdir -p example-results
           $FLUTTER_ROOT/bin/dart run ./example/extend_example.dart > example-results/example-results.txt
         test_report: example-results/example-results.txt
+      - name: Dart Code Metrics
+        script: |
+          flutter pub global activate dart_code_metrics 4.2.1
+          mkdir -p metrics-results
+          flutter pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
+        test_report: metrics-results/dart_code_metrics.json
     artifacts:
       - flutter_drive.log
     publishing:
