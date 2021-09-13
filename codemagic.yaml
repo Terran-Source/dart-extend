@@ -4,6 +4,7 @@
 workflows:
   dart-latest-workflow:
     name: Dart Latest Workflow
+    instance_type: mac_mini
     max_build_duration: 30
     environment:
       flutter: stable
@@ -72,9 +73,10 @@ workflows:
           - patra.tamal@gmail.com
   dart-null-safety-workflow:
     name: Dart Null Safety Workflow
+    instance_type: mac_mini
     max_build_duration: 30
     environment:
-      flutter: v2.0.1-stable
+      flutter: 2.0
     cache:
       cache_paths:
         - $FLUTTER_ROOT/.pub-cache
