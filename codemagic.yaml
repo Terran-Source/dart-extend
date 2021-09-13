@@ -55,6 +55,7 @@ workflows:
         script: |
           cd $FCI_BUILD_DIR
           mkdir -p test-results
+          ls -al
           $FLUTTER_ROOT/bin/dart test --file-reporter json:test-results/test-results.json
         test_report: test-results/test-results.json
       - name: Run Example
