@@ -82,7 +82,7 @@ workflows:
     environment:
       vars:
         SKIP_CODE_METRICS: 1
-      flutter: 2.0.1
+      flutter: stable2.0.1
     cache:
       cache_paths:
         - $FLUTTER_ROOT/.pub-cache
