@@ -58,10 +58,14 @@ workflows:
         test_report: test-results/test-results.json
       - name: Dart Code Metrics
         script: |
-          flutter pub global activate dart_code_metrics 4.2.1
-          cd $FCI_BUILD_DIR
-          mkdir -p metrics-results
-          flutter pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
+          if [[ -z ${SKIP_CODE_METRICS+x} && "$SKIP_CODE_METRICS" == "1" ]]; then
+            echo "Skipping Dart Code Metrics check"
+          else
+            flutter pub global activate dart_code_metrics 4.2.1
+            cd $FCI_BUILD_DIR
+            mkdir -p metrics-results
+            flutter pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
+          fi
         test_report: metrics-results/dart_code_metrics.json
     artifacts:
       - test-results/test-results.json
@@ -76,7 +80,9 @@ workflows:
     instance_type: mac_mini
     max_build_duration: 30
     environment:
-      flutter: 2.0
+      vars:
+        SKIP_CODE_METRICS: 1
+      flutter: v2.0.0
     cache:
       cache_paths:
         - $FLUTTER_ROOT/.pub-cache
@@ -127,10 +133,14 @@ workflows:
         test_report: test-results/test-results.json
       - name: Dart Code Metrics
         script: |
-          flutter pub global activate dart_code_metrics 4.2.1
-          cd $FCI_BUILD_DIR
-          mkdir -p metrics-results
-          flutter pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
+          if [[ -z ${SKIP_CODE_METRICS+x} && "$SKIP_CODE_METRICS" == "1" ]]; then
+            echo "Skipping Dart Code Metrics check"
+          else
+            flutter pub global activate dart_code_metrics 4.2.1
+            cd $FCI_BUILD_DIR
+            mkdir -p metrics-results
+            flutter pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
+          fi
         test_report: metrics-results/dart_code_metrics.json
     artifacts:
       - test-results/test-results.json
