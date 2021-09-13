@@ -92,7 +92,7 @@ workflows:
           cd $FCI_BUILD_DIR
       - name: Get Dart packages
         # script: flutter packages pub get
-        script: dart pub get
+        script: $FLUTTER_ROOT/bin/dart pub get
       - name: Dart Code Metrics
         script: |
           flutter pub global activate dart_code_metrics
