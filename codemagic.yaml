@@ -100,6 +100,7 @@ workflows:
         test_report: metrics-results/dart_code_metrics.json
       - name: Test Project
         script: |
+          pwd
           # cd $FCI_BUILD_DIR
           $FLUTTER_ROOT/bin/dart pub get
           $FLUTTER_ROOT/bin/dart test
