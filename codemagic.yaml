@@ -83,15 +83,15 @@ workflows:
           echo "----"
           flutter --version
           echo "----"
-          dart --version
-          # $FLUTTER_ROOT/bin/dart --version
+          # dart --version
+          $FLUTTER_ROOT/bin/dart --version
           echo "----"
       - name: Goto Project Directory
         script: |
           echo "Project path: $FCI_BUILD_DIR"
           cd $FCI_BUILD_DIR
       - name: Get Dart packages
-        script: flutter packages pub get
+        script: flutter pub get
       - name: Dart Code Metrics
         script: |
           flutter pub global activate dart_code_metrics 4.2.1
