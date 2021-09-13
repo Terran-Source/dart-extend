@@ -93,14 +93,11 @@ workflows:
         script: flutter packages pub get
       - name: Test Project
         script: |
-          pwd
-          # cd $FCI_BUILD_DIR
-          # $FLUTTER_ROOT/bin/dart pub get
-          $FLUTTER_ROOT/bin/dart test
+          flutter test
       - name: Run Example
         script: |
           mkdir -p example-results
-          $FLUTTER_ROOT/bin/dart run ./example/extend_example.dart > example-results/example-results.txt
+          $FLUTTER_ROOT/bin/dart run example/extend_example.dart > example-results/example-results.txt
         test_report: example-results/example-results.txt
       - name: Dart Code Metrics
         script: |
