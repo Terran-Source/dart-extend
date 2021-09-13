@@ -94,7 +94,9 @@ workflows:
           $FLUTTER_ROOT/bin/dart --version
           echo "----"
       - name: Goto Project Directory
-        script: cd $PROJECT_PATH
+        script: |
+          echo "Project path: $PROJECT_PATH"
+          cd $PROJECT_PATH
       - name: Get Dart packages
         # script: flutter packages pub get
         script: flutter packages pub get
