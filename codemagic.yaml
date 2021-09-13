@@ -86,16 +86,26 @@ workflows:
           # echo "Flutter bin directory contents"
           # ls -al $FLUTTER_ROOT/bin
           # echo "----"
-          export PATH=$FLUTTER_ROOT/bin:$PATH
+          export PATH=$FLUTTER_ROOT/bin:$FLUTTER_ROOT/.pub-cache/bin:$PATH
           flutter --version
           dart --version
       - name: Goto Project Directory
         script: cd $PROJECT_PATH
       - name: Get Dart packages
         script: flutter packages pub get
-      - flutter pub global run dart_code_metrics:metrics analyze lib
-      - dart test
-      - dart run ./example/extend_example.dart
+      - name: Dart Code Metrics
+        script: |
+          flutter pub global activate dart_code_metrics
+          mkdir -p metrics-results
+          flutter pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
+        test_report: metrics-results/dart_code_metrics.json
+      - name: Test Project
+        script: dart test
+      - name: Run Example
+        script: |
+          mkdir -p example-results
+          dart run ./example/extend_example.dart > example-results/example-results.txt
+        test_report: example-results/example-results.txt
     artifacts:
       - flutter_drive.log
     publishing:
