@@ -91,11 +91,12 @@ workflows:
           echo "----"
           flutter --version
           echo "----"
-          $FLUTTER_ROOT/bin/dart
+          $FLUTTER_ROOT/bin/dart --version
           echo "----"
       - name: Goto Project Directory
         script: cd $PROJECT_PATH
       - name: Get Dart packages
+        # script: flutter packages pub get
         script: flutter packages pub get
       - name: Dart Code Metrics
         script: |
@@ -103,12 +104,10 @@ workflows:
           mkdir -p metrics-results
           flutter pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
         test_report: metrics-results/dart_code_metrics.json
-      - name: Set Dart executable in PATH
-        script: |
-          export PATH=$FLUTTER_ROOT/bin:$PATH
-          dart --version
       - name: Test Project
-        script: $FLUTTER_ROOT/bin/dart test .
+        script: |
+          cd $PROJECT_PATH
+          $FLUTTER_ROOT/bin/dart test
       - name: Run Example
         script: |
           mkdir -p example-results
