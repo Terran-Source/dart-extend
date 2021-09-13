@@ -82,7 +82,7 @@ workflows:
     environment:
       vars:
         SKIP_CODE_METRICS: 1
-      flutter: v2.0.0
+      flutter: stable v2.0.0
     cache:
       cache_paths:
         - $FLUTTER_ROOT/.pub-cache
@@ -133,6 +133,7 @@ workflows:
         test_report: test-results/test-results.json
       - name: Dart Code Metrics
         script: |
+          echo "SKIP_CODE_METRICS: $SKIP_CODE_METRICS"
           if [[ -z ${SKIP_CODE_METRICS+x} && "$SKIP_CODE_METRICS" == "1" ]]; then
             echo "Skipping Dart Code Metrics check"
           else
