@@ -93,12 +93,12 @@ workflows:
           echo "----"
           $FLUTTER_ROOT/bin/dart --version
           echo "----"
-          echo "Project path: $PROJECT_PATH"
-          cd $PROJECT_PATH
+          echo "Project path: $FCI_BUILD_DIR"
+          cd $FCI_BUILD_DIR
       - name: Goto Project Directory
         script: |
-          echo "Project path: $PROJECT_PATH"
-          cd $PROJECT_PATH
+          echo "Project path: $FCI_BUILD_DIR"
+          cd $FCI_BUILD_DIR
       - name: Get Dart packages
         # script: flutter packages pub get
         script: flutter packages pub get
@@ -110,7 +110,7 @@ workflows:
         test_report: metrics-results/dart_code_metrics.json
       - name: Test Project
         script: |
-          cd $PROJECT_PATH
+          cd $FCI_BUILD_DIR
           $FLUTTER_ROOT/bin/dart test
       - name: Run Example
         script: |
