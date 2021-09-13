@@ -52,6 +52,7 @@ workflows:
     cache:
       cache_paths:
         - $FLUTTER_ROOT/.pub-cache
+        - ~/.pub-cache
     triggering:
       events:
         - push
@@ -87,21 +88,20 @@ workflows:
           # ls -al $FLUTTER_ROOT/bin
           # echo "----"
           flutter --version
-      - name: Enable Flutter Dart Code Metrics
-        script: flutter pub global activate dart_code_metrics
-      - name: Set Dart executable in PATH
-        script: |
-          export PATH=$FLUTTER_ROOT/bin:$FLUTTER_ROOT/.pub-cache/bin:$PATH
-          dart --version
       - name: Goto Project Directory
         script: cd $PROJECT_PATH
       - name: Get Dart packages
         script: flutter packages pub get
       - name: Dart Code Metrics
         script: |
+          flutter pub global activate dart_code_metrics
           mkdir -p metrics-results
           flutter pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
         test_report: metrics-results/dart_code_metrics.json
+      - name: Set Dart executable in PATH
+        script: |
+          export PATH=$FLUTTER_ROOT/bin:$PATH
+          dart --version
       - name: Test Project
         script: dart test
       - name: Run Example
