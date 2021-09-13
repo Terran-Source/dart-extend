@@ -67,6 +67,9 @@ workflows:
         - pattern: feature/*
           include: true
           source: true
+        - pattern: hotfix/*
+          include: true
+          source: true
       tag_patterns:
         - pattern: v[1-9]*.[0-9]*
           include: true
@@ -75,12 +78,14 @@ workflows:
     scripts:
       - name: Check Dependency versions
         script: |
+          PROJECT_PATH="$(pwd)"
           FLUTTER_PATH="$(which flutter)"
+          echo "Project path: $PROJECT_PATH"
           echo "Flutter path: $FLUTTER_PATH"
           flutter --version
           dart --version
       - name: Goto Project Directory
-        script: cd .
+        script: cd $PROJECT_PATH
       - name: Get Dart packages
         script: flutter packages pub get
       - 'flutter '
