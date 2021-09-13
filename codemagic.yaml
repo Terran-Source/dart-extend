@@ -47,15 +47,16 @@ workflows:
         script: |
           echo "Project path: $FCI_BUILD_DIR"
           cd $FCI_BUILD_DIR
-      - name: Get Dart packages
-        script: |
-          cd $FCI_BUILD_DIR
-          flutter packages pub get
+      # - name: Get Dart packages
+      #   script: |
+      #     cd $FCI_BUILD_DIR
+      #     flutter packages pub get
       - name: Test Project
         script: |
           cd $FCI_BUILD_DIR
           mkdir -p test-results
           ls -al
+          $FLUTTER_ROOT/bin/dart pub get
           $FLUTTER_ROOT/bin/dart test --file-reporter json:test-results/test-results.json
         test_report: test-results/test-results.json
       - name: Run Example
