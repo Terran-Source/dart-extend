@@ -79,7 +79,7 @@ workflows:
     scripts:
       - name: Check Dependency versions
         script: |
-          export PATH=$FLUTTER_ROOT/bin:$FLUTTER_ROOT/.pub-cache/bin:$PATH
+          # export PATH=$FLUTTER_ROOT/bin:$FLUTTER_ROOT/.pub-cache/bin:$PATH
           echo "----"
           flutter --version
           echo "----"
