@@ -51,7 +51,7 @@ workflows:
       flutter: stable
     cache:
       cache_paths:
-        # - $FLUTTER_ROOT/.pub-cache
+        - $FLUTTER_ROOT/.pub-cache
         - ~/.pub-cache
     triggering:
       events:
@@ -86,6 +86,7 @@ workflows:
           dart --version
           # $FLUTTER_ROOT/bin/dart --version
           echo "----"
+          flutter pub cache clean
       - name: Goto Project Directory
         script: |
           echo "Project path: $FCI_BUILD_DIR"
