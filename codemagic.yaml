@@ -82,6 +82,7 @@ workflows:
           FLUTTER_PATH="$(which flutter)"
           echo "Project path: $PROJECT_PATH"
           echo "Flutter path: $FLUTTER_PATH"
+          ls -al $FLUTTER_PATH
           flutter --version
           dart --version
       - name: Goto Project Directory
