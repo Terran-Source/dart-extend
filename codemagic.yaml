@@ -51,7 +51,7 @@ workflows:
       flutter: stable
     cache:
       cache_paths:
-        - ~/.pub-cache
+        - $FLUTTER_ROOT/.pub-cache
     triggering:
       events:
         - push
@@ -82,6 +82,7 @@ workflows:
           FLUTTER_PATH="$(which flutter)"
           echo "Project path: $PROJECT_PATH"
           echo "Flutter path: $FLUTTER_PATH"
+          echo "Flutter root path: $FLUTTER_ROOT"
           ls -al $FLUTTER_PATH
           flutter --version
           dart --version
