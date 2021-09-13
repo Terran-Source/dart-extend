@@ -78,12 +78,15 @@ workflows:
     scripts:
       - name: Check Dependency versions
         script: |
-          PROJECT_PATH="$(pwd)"
+          export PROJECT_PATH="$(pwd)"
           FLUTTER_PATH="$(which flutter)"
           echo "Project path: $PROJECT_PATH"
           echo "Flutter path: $FLUTTER_PATH"
           echo "Flutter root path: $FLUTTER_ROOT"
-          ls -al $FLUTTER_PATH
+          echo "Flutter bin directory contents"
+          ls -al $FLUTTER_ROOT/bin
+          echo "----"
+          export PATH=$FLUTTER_ROOT/bin:$PATH
           flutter --version
           dart --version
       - name: Goto Project Directory
