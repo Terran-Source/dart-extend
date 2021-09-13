@@ -101,6 +101,7 @@ workflows:
       - name: Test Project
         script: |
           # cd $FCI_BUILD_DIR
+          $FLUTTER_ROOT/bin/dart pub get
           $FLUTTER_ROOT/bin/dart test
       - name: Run Example
         script: |
