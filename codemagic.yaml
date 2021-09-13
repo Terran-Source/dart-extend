@@ -86,8 +86,7 @@ workflows:
           dart --version
           # $FLUTTER_ROOT/bin/dart --version
           echo "----"
-          # flutter pub cache clean
-          rm -r ~/.pub-cache
+          flutter pub cache clean --force
       - name: Goto Project Directory
         script: |
           echo "Project path: $FCI_BUILD_DIR"
