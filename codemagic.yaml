@@ -79,13 +79,13 @@ workflows:
       - name: Check Dependency versions
         script: |
           export PROJECT_PATH="$(pwd)"
-          FLUTTER_PATH="$(which flutter)"
-          echo "Project path: $PROJECT_PATH"
-          echo "Flutter path: $FLUTTER_PATH"
-          echo "Flutter root path: $FLUTTER_ROOT"
-          echo "Flutter bin directory contents"
-          ls -al $FLUTTER_ROOT/bin
-          echo "----"
+          # FLUTTER_PATH="$(which flutter)"
+          # echo "Project path: $PROJECT_PATH"
+          # echo "Flutter path: $FLUTTER_PATH"
+          # echo "Flutter root path: $FLUTTER_ROOT"
+          # echo "Flutter bin directory contents"
+          # ls -al $FLUTTER_ROOT/bin
+          # echo "----"
           export PATH=$FLUTTER_ROOT/bin:$PATH
           flutter --version
           dart --version
@@ -93,7 +93,6 @@ workflows:
         script: cd $PROJECT_PATH
       - name: Get Dart packages
         script: flutter packages pub get
-      - 'flutter '
       - flutter pub global run dart_code_metrics:metrics analyze lib
       - dart test
       - dart run ./example/extend_example.dart
