@@ -51,7 +51,7 @@ workflows:
       flutter: stable
     cache:
       cache_paths:
-        - $FLUTTER_ROOT/.pub-cache
+        # - $FLUTTER_ROOT/.pub-cache
         - ~/.pub-cache
     triggering:
       events:
