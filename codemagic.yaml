@@ -74,7 +74,7 @@ workflows:
     name: Dart Null Safety Workflow
     max_build_duration: 30
     environment:
-      flutter: v2.0.0
+      flutter: v2.0.1-stable
     cache:
       cache_paths:
         - $FLUTTER_ROOT/.pub-cache
