@@ -103,7 +103,7 @@ workflows:
         script: |
           cd $FCI_BUILD_DIR
           mkdir -p example-results
-          ls -al
+          ls -al example
           $FLUTTER_ROOT/bin/dart run example/extend_example.dart > example-results/example-results.txt
         test_report: example-results/example-results.txt
       - name: Dart Code Metrics
@@ -114,7 +114,9 @@ workflows:
           flutter pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
         test_report: metrics-results/dart_code_metrics.json
     artifacts:
-      - flutter_drive.log
+      - test-results/test-results.json
+      - example-results/example-results.txt
+      - metrics-results/dart_code_metrics.json
     publishing:
       email:
         recipients:
