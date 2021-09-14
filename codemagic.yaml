@@ -97,7 +97,7 @@ workflows:
     environment:
       vars:
         SKIP_CODE_METRICS: 1
-      flutter: 2.0.1
+      flutter: 2.0.0
   dart-tagged-deploy-workflow:
     <<: *base-flow
     name: Dart Deploy tagged Package Workflow
