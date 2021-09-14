@@ -9,8 +9,8 @@ workflows:
     # working_directory: # default to `$FCI_BUILD_DIR`. set this if it's other the repo root
     environment:
       # vars:
-      #   SKIP_CODE_METRICS: 0
       #   SKIP_TEST: 0
+      #   SKIP_CODE_METRICS: 0
       flutter: stable # available are 'stable', 'beta', vX.Y.Z, X.Y.Z
     cache:
       cache_paths:
@@ -98,6 +98,7 @@ workflows:
     # max_build_duration: 30
     environment:
       vars:
+        SKIP_TEST: 1
         SKIP_CODE_METRICS: 1
       flutter: stable, 2.0.0
   #   cache:
