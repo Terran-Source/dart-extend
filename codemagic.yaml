@@ -8,7 +8,7 @@ workflows:
     max_build_duration: 30
     environment:
       vars:
-        SKIP_CODE_METRICS: 1
+        SKIP_CODE_METRICS: 0
       flutter: stable
     cache:
       cache_paths:
