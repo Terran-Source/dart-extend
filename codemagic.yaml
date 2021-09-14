@@ -61,8 +61,7 @@ workflows:
       - name: Dart Code Metrics
         script: |
           echo "SKIP_CODE_METRICS: $SKIP_CODE_METRICS"
-          # if [[ -z ${SKIP_CODE_METRICS+x} && "$SKIP_CODE_METRICS" == "1" ]]; then
-          if [[ ! -z ${SKIP_CODE_METRICS+x} ]]; then
+          if [[ ! -z ${SKIP_CODE_METRICS+x} && "$SKIP_CODE_METRICS" == "1" ]]; then
             echo "Skipping Dart Code Metrics check"
           else
             # flutter pub global activate dart_code_metrics 4.2.1
