@@ -100,7 +100,7 @@ workflows:
       vars:
         SKIP_TEST: 1
         SKIP_CODE_METRICS: 1
-      flutter: 'stable/2.0.0'
+      flutter: 2.0.0-beta
   #   cache:
   #     cache_paths:
   #       - $FLUTTER_ROOT/.pub-cache
