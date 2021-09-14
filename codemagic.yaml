@@ -2,7 +2,7 @@
 # Note that this configuration is not an exact match to UI settings. Review and adjust as necessary.
 
 workflows:
-  dart-latest-workflow:
+  dart-latest-workflow: &base-flow
     name: Dart Latest Workflow
     instance_type: mac_mini # available are 'mac_mini', 'mac_pro'*, 'linux'*, 'linux_x2'* (*: with billing only)
     max_build_duration: 30
@@ -39,6 +39,12 @@ workflows:
       #     include: true
       #   - pattern: v[1-9]*.[0-9]*.[0-9]*
       #     include: true
+    # when: # describe to include and/or exclude path's from triggering
+    #   changeset:
+    #     includes:
+    #       - '.'
+    #     excludes:
+    #       - '**/*.md'
     scripts:
       - name: Check SDK versions
         script: |
@@ -85,14 +91,15 @@ workflows:
       email:
         recipients:
           - patra.tamal@gmail.com
-  # dart-null-safety-workflow:
-  #   name: Dart Null Safety Workflow
-  #   instance_type: mac_mini
-  #   max_build_duration: 30
-  #   environment:
-  #     vars:
-  #       SKIP_CODE_METRICS: 1
-  #     flutter: 2.0.0
+  dart-null-safety-workflow:
+    <<: *base-flow
+    name: Dart Null Safety Workflow
+    # instance_type: mac_mini
+    # max_build_duration: 30
+    environment:
+      vars:
+        SKIP_CODE_METRICS: 1
+      flutter: 2.0.0
   #   cache:
   #     cache_paths:
   #       - $FLUTTER_ROOT/.pub-cache
